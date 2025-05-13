@@ -69,7 +69,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Telas de Galeria */
+        /* Telas de Galeria - MODIFICADO PARA FOTOS QUADRADAS */
         .gallery-screen {
             display: none;
             width: 100%;
@@ -88,14 +88,17 @@
         }
 
         .photo-container {
-            width: 80%;
-            max-width: 300px;
+            width: 300px;
             height: 300px;
             border-radius: 15px;
             overflow: hidden;
             margin: 20px auto;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             position: relative;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .photo-slide {
@@ -109,6 +112,14 @@
 
         .photo-slide.active {
             opacity: 1;
+        }
+
+        /* NOVO: Estilo para garantir que a imagem fique quadrada e centralizada */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .message {
@@ -177,6 +188,7 @@
                 min-width: 120px;
             }
             .photo-container {
+                width: 250px;
                 height: 250px;
             }
         }
@@ -189,21 +201,19 @@
         <button id="main-btn" class="btn">Abre o presente ai dona raissa</button>
         <button id="runaway-btn" class="btn">Não quero presente não✌</button>
         
-        <!-- Controle de Áudio (Oculto) -->
         <audio id="bg-music" loop>
-            <source src="" type="audio/mp3"> <!-- Adicione seu MP3 aqui -->
+            <source src="/teste4/audio/musica.mp3" type="audio/mp3">
         </audio>
     </div>
 
     <!-- Telas de Galeria -->
     <div id="gallery1" class="gallery-screen">
         <div class="photo-container">
-            <!-- Substitua pelas URLs das suas fotos -->
-            <img class="photo-slide active" src="https://via.placeholder.com/300?text=Foto+1" alt="Foto 1">
-            <img class="photo-slide" src="https://via.placeholder.com/300?text=Foto+2" alt="Foto 2">
-            <img class="photo-slide" src="https://via.placeholder.com/300?text=Foto+3" alt="Foto 3">
-            <img class="photo-slide" src="https://via.placeholder.com/300?text=Foto+4" alt="Foto 4">
-            <img class="photo-slide" src="https://via.placeholder.com/300?text=Foto+5" alt="Foto 5">
+            <img class="photo-slide active" src="/teste4/imagens/imagem1.jpg" alt="Foto 1">
+            <img class="photo-slide" src="/teste4/imagens/imagem2.jpg" alt="Foto 2">
+            <img class="photo-slide" src="/teste4/imagens/imagem3.jpg" alt="Foto 3">
+            <img class="photo-slide" src="/teste4/imagens/imagem4.jpg" alt="Foto 4">
+            <img class="photo-slide" src="/teste4/imagens/imagem5.jpg" alt="Foto 5">
         </div>
         
         <div class="message">
@@ -221,7 +231,7 @@
 
     <div id="gallery2" class="gallery-screen">
         <div class="photo-container">
-            <img class="photo-placeholder" src="https://via.placeholder.com/300?text=Outra+Foto" alt="Foto Extra">
+            <img class="photo-placeholder" src="/teste4/imagens/imagem6.jpg" alt="Foto Extra">
         </div>
         <div class="message">
             <p>Ja pode voltar a ler dona raissa</p>
@@ -258,8 +268,6 @@
         document.getElementById('main-btn').addEventListener('click', () => {
             document.getElementById('home-screen').style.display = 'none';
             document.getElementById('gallery1').style.display = 'flex';
-            // Inicia música (opcional)
-            // document.getElementById('bg-music').play();
         });
 
         function nextGallery(current) {
@@ -301,13 +309,13 @@
         // Transição automática (3 segundos)
         setInterval(nextPhoto, 3000);
 
-        // Flores Animadas (Personalizável)
+        // Flores Animadas
         const flowerConfig = {
-            types: ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷','⛅','☀','🏖','🌅'], // Tipos de flores
-            total: 20, // Quantidade
-            minSize: 15, // Tamanho mínimo (px)
-            maxSize: 30, // Tamanho máximo (px)
-            animationDuration: { min: 10, max: 25 } // Velocidade (s)
+            types: ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷','⛅','☀','🏖','🌅'],
+            total: 20,
+            minSize: 15,
+            maxSize: 30,
+            animationDuration: { min: 10, max: 25 }
         };
 
         function createFlowers() {
